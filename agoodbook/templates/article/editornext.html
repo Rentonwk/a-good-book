@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <h1>发表成功！！！</h1>
+    <a href="{% url 'newfilm:editor' %}">再写一篇...</a>
+    <a href="{% url 'newfilm:articles' %}">返回文章首页...</a>
+    <a href="">查看文章详情...</a>
+
+{% endblock %}

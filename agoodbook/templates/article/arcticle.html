@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <div style="margin: 0 auto;width: 80%;font-size: 15px">
+        {% for a in articles %}
+            <div class="index">
+                <br>
+                <p>
+                    <a href="{% url 'newfilm:article' a.id%}" style="font-weight: bold">{{ a.title }}</a>
+                </p>
+                    <span>作者：<a href="">{{ a.get_user }}</a>&nbsp;</span>
+                    <span class="date" style="float: right;">{{ a.date }}</span>
+            </div>
+
+        {% endfor %}
+            <hr>
+
+        {% for page in pages %}
+        <a href="/articles/?page={{forloop.counter}}" style="font-size: 25px">&nbsp;{{ forloop.counter }}</a>
+        {% endfor %}
+
+{#        <div>最热文章</div>#}
+{#        {% for a, n in top10 %}#}
+{#        <div class="index">#}
+{#            <span class="date">{{ a.date }}</span>#}
+{#            <a href="">{{a.title}}</a>#}
+{#            <span class="date" style="float: right;">访问数: {{n}}</span>#}
+{#        </div>#}
+{#        {% endfor %}#}
+        <hr>
+    </div>
+
+
+
+
+{% endblock %}

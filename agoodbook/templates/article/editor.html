@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form role="form" action="/post/editor/" method="POST" novalidate="NOVALIDATE">{% csrf_token %}
+            <div class="form-group">
+                <label for="title">标题</label>
+                {{ form.title }}<span style="color: red">{{ form.title.errors.0 }}</span>
+
+            </div>
+
+            <div class="form-group">
+                <label for="content">文章内容</label>
+                {{ form.content }}<span style="color: red">{{ form.content.errors.0 }}</span>
+            </div>
+
+            <input type="submit" class="btn btn-default" value="发表"/>
+            <br>
+        </form>
+    </div>
+{% endblock %}
