@@ -1,0 +1,30 @@
+{#{% extends "main/base.html" %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    {% for a in videos %}#}
+{#        <div class="index" style="margin-left: 30%">#}
+{#            <span class="date">{{ a.date }}</span>#}
+{#            <a href="/post/video/?aid={{ a.id }}">{{ a.title }}</a>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{##}
+{#    {% for page in pages %}#}
+{#        <div style="margin-left: 30%">#}
+{#        <a href="/post/video/?page={{ forloop.counter }}">{{ forloop.counter }}</a>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{##}
+{#    <hr>#}
+{#    <div>最热文章</div>#}
+{#    {% for a, n in top10 %}#}
+{#        <div class="index">#}
+{#            <span class="date">{{ a.date }}</span>#}
+{#            <a href="/post/show/?aid={{ a.id }}">{{ a.title }}</a>#}
+{#            <span class="date" style="float: right;">访问数: {{ n }}</span>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#    <hr>#}
+{##}
+{##}
+{#{% endblock %}#}

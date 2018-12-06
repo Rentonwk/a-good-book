@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+注册
+{% endblock %}
+
+
+
+{% block content %}
+    <br>
+
+<div class="register" style="margin: 5% auto;width: 310px">
+    <div style="font-size: 25px; font-weight: bold;text-align: center;">
+        用户注册
+    </div>
+    <form role="form" action="/register/" method="POST" novalidate="NOVALIDATE">{% csrf_token %}
+
+        <div class="form-group">
+            <label for="username">用户名</label>
+            {{ form.username }}<span style="color: red">{{ form.username.errors.0 }}</span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="password">密码</label>
+            {{ form.pwd }}<span style="color: red">{{ form.pwd.errors.0 }}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="pwd_again">确认密码</label>
+            {{ form.pwd_again }}<span style="color: red">{{ form.pwd_again.errors.0 }}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">邮箱</label>
+            {{ form.email }}<span style="color: red">{{ form.email.errors.0 }}</span>
+        </div>
+
+        <input type="submit" class="btn btn-default" value="注册"/>
+    <span>已有账号？<a href="{% url 'newfilm:user_login' %}">直接登录</a></span>
+        <br>
+
+    </form>
+
+
+</div>
+
+    <br>
+{% endblock %}
+
+{% block ext_js %}
+{#    <script>#}
+{#        $(function () {#}
+{#            $('.before_register').change(function () {#}
+{#                var preUsername = $(this).val();#}
+{#                var url = 'http://127.0.0.1:8000/before_check';#}
+{#                $.get(url,{'username':preUsername},function (result) {#}
+{#                    $('span').html(result.status);#}
+{#                })#}
+{#            })#}
+{#        })#}
+{#    </script>#}
+{% endblock %}
+

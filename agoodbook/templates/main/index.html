@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block ext_css %}
+    <style type="text/css">
+
+
+        .location_wrappage-cover-main{
+            position:absolute;
+            top: 300px;
+            width: 100%;
+        }
+        .detail{
+            margin-left:35%;
+            color: white;
+        }
+
+        .detail p{
+            margin-left: 15px;
+        }
+
+        .location_btn-warp{
+            position:absolute;
+            top: 480px;
+            width: 100%;
+        }
+        .location_btn-warp a{
+            display: block;
+            width: 25%;
+            height: 10%;
+            color: white;
+            line-height: 50px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            float: left;
+            margin-left:15px ;
+        }
+        .location_btn-warp_a1{
+            background: rgba(191, 191, 191, 0.44);
+        }
+        .location_btn-warp_a2{
+            background: rgba(255, 56, 40, 0.76);
+        }
+
+        a{
+            text-decoration: none !important;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <video style="width: 100%;margin-top: -20px" src="/static/videos/2.mp4" loop muted autoplay preload class="need-though-play opacity0"></video>
+
+
+    <div class="location_wrappage-cover-main">
+			<div class="detail">
+				<p style="font-size: 60px">用作品打动世界</p>
+				<p style="font-size: 20px"><i class="num">638,742</i> 位创作人已加入</p>
+			</div>
+
+    </div>
+
+
+    <div class="location_btn-warp" data-key="位置">
+            <div class="detail">
+				<a class="location_btn-warp_a1" href="">随便逛逛</a>
+				<a class="location_btn-warp_a2" href="">立即加入</a>
+            </div>
+    </div>
+
+
+{% endblock %}

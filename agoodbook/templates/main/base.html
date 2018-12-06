@@ -1,0 +1,185 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            新片场
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no">
+    <link rel="shortcut icon" href="{% static 'main/img/logo.png' %} ">
+
+
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/swiper.min.css' %}">
+    <script type="text/javascript" src="{% static 'main/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/js/swiper.min.js' %}"></script>
+    <style type="text/css">
+        nav a {
+            color: #47feff !important;
+        }
+
+        .dropdown-menu {
+            background: rgba(0, 0, 0, 0.38);
+        }
+
+        nav a:hover {
+            color: #ff9821 !important;
+            font-weight: bold;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+
+    </style>
+
+    {% block ext_css %}
+    {% endblock %}
+
+</head>
+<body style="height: 100%;background: rgb(230,230,230);">
+
+{% block navbar %}
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="{% url 'agoodbook:index' %}">首页</a>
+                {#            <a class="navbar-brand" href="/publish/"><span>发表文章</span></a>#}
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="">学院</a></li>
+                    <li><a href="#">活动</a></li>
+                    <li><a href="#">热门</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">发现<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">作品</a></li>
+                            <li><a href="#">创作人</a></li>
+                            <li><a href="">文章</a></li>
+                            <li><a href="">去写作</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">素材<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">视频</a></li>
+                            <li><a href="#">音乐</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">更多 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">V电影</a></li>
+                            <li><a href="#">新片场影业</a></li>
+                            <li><a href="#">魔力TV</a></li>
+                            <li><a href="#">魔力互动</a></li>
+                            <li><a href="#">短视频交易市场</a></li>
+                        </ul>
+                    </li>
+
+                    {% if  request.user.is_authenticated %}
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">我的地盘儿 <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="">我的首页</a></li>
+                                <li><a href="">发表文章</a></li>
+                                <li><a href="#">订阅</a></li>
+                                <li><a href="#">关于我们</a></li>
+                                <li><a href="#">活动</a></li>
+                                <li><a href="#">合作</a></li>
+
+                            </ul>
+                        </li>
+
+                    {% endif %}
+                </ul>
+
+                <form class="navbar-form navbar-right" action="/search/" method="POST">{% csrf_token %}
+
+
+                    <div class="form-group">
+                        <input type="text" name="keywords" class="form-control" placeholder="Search">
+
+                    </div>
+                    <button type="submit" class="btn btn-default header-button"><span
+                            class="glyphicon glyphicon-search"></span></button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if  request.user.is_authenticated %}
+                        <li><a href="{% url '' %}">退出</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">{{ request.user.username }}<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">用户信息</a></li>
+                                <li><a href="#">修改密码</a></li>
+                                <li><a href="#">修改邮箱</a></li>
+                                <li><a href="#">我的收藏</a></li>
+                                <li><a href="#">修改头像</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+
+                        <li><a href="">登录</a></li>
+                        <li><a href="">注册</a></li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+
+{% block content %}{% endblock %}
+
+
+{% block foot %}{% endblock %}
+
+
+{% block ext_js %}{% endblock %}
+
+</body>
+</html>
